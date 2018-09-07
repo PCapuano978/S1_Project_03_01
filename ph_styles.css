@@ -1,17 +1,27 @@
-@charset "utf-8" ;
-@font-face {
-    font-family: Champagne;
-    src: url("cac_champagne.woff") format('woff'),
-    url("cac_champagne.ttf") format('truetype');
-    
-    font-family: Grunge;
-    src: url("1942.woff") format('woff'),
-    url("1942.ttf") format('woff');
+@charset "utf-8";
 
-    font-family: Dokin;
-    src: url("Dobkinplain.woff") format('woff'),
-    url("DobkinPlain.ttf") format('.ttf');
+/* This element establishes that "utf-8" encoding will apply on this CSS stylesheet */
+
+@font-face {
+    font-family: 'Champagne';
+    src: url('cac_champagne.woff') format('woff'),
+        url('cac_champagne.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: 'Grunge';
+    src: url('1942.woff') format('woff'),
+        url('1942.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Dobkin';
+    src: url('Dobkinplain.woff') format('woff'),
+        url('DobkinPlain.ttf') format('truetype');
+}
+
+/* Each of these font-faces receive the font families to be used on the website from other pages. */
+
 /*
    New Perspectives on HTML5 and CSS3, 7th Edition
    Tutorial 2
@@ -24,18 +34,20 @@
    Filename: ph_styles.css
 
 */
-
-
 /* Structural Styles */
-
 html {
     background-color: hsl(91, 8%, 56%);
 }
 
+/* By selecting "html" it effectivly changes all elements on the page, in this case the background HSL. */
+
 body {
     background-color: hsl(58, 31%, 84%);
-    font-family: 'Palatino Linotype', 'Aniqua', Palatino, serif;
+    font-family: 'Palatino Linotype', 'Aniqua', 'Palatino', serif;
 }
+
+/* This is the first instance of a font-family property and it includes a font branch that takes
+priority from right to left as not all browsers will support the first, or even second font-family.  */
 
 header {
     background: black;
@@ -43,85 +55,109 @@ header {
 
 p {
     margin: 0px;
-    padding: 5px, 25px, 25px, 25px;
+    padding: 5px 25px 25px 25px;
 }
+
+/* Margin and paddings are effected here. All of the margins of "p" tags are effected with one value,
+    but the padding had each side alterered individually in clockwise order from top to left. */
 
 body > p {
     font-size: 1.1em;
     text-align: center;
 }
 
+/* By entering the ">" in the selector, you tell the program to effect all latter elements that are
+direct children of the former element, in this case all "p" tags that are directly under "body" tags. */
+
 address {
     font-style: normal;
     font-size: 1.1em;
-    padding: 10px, 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    /* In this instance, to effect the top and bottom paddings I give them indivdual properties
+    instead of doing them all at once so I can keep the left and right paddings as the defaults. */
+
+}
+
+footer {
+    text-align: center;
 }
 
 /* Navigation Styles */
-
 nav a {
     font-family: 'Trecechet MS', Helvetica, sans-serif;
-    padding: 10px, 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-nav a:link {
+nav a:link,  
+nav a:visited {
     color: white;
     text-underline-position: unset;
     background-color: hsla(0, 0%, 42%, 0.4)
 }
 
-nav a:active, a:hover {
+
+nav a:active,
+a:hover {
     color: hsla(0, 0%, 42%, 0.4);
     background-color: hsl(0, 0%, 42%, 0.4);
 }
 
-/* Section Styles */
+/* The pseudo elements here effect links with how the mouse interacts with them, in case making
+sure the links stay white when clicked, having the underlines removed, and even having the HSLA altered.  d*/
 
+/* Section Styles */
 section.playbill h1 {
     font-size: 3em;
     font-weight: normal;
     margin: 0px;
-    padding: 20px, 0px, 10px, 20px;
+    padding: 20px 0px 10px 20px;
 }
 
-#play1 {
+/* This class selector effects all "h1" elements with the "id" of "playbill." */
+
+section#play1 {
     background-color: hsl(240, 100%, 88%);
 }
 
-#play2 {
-    background-color: hsl(25, 88%, 73%)
+section#play2 {
+    background-color: hsl(25, 88%, 73%);
 }
 
-#play3 {
-    background-color: hsl(0, 100%, 75%)
+ section#play3  {
+    font-family: Impact, 'Charcoal', sans-serif;
 }
 
-#play4 {
-    background-color: hsl(296, 86%, 86%)
+section#play4 {
+    font-family: 'Dobkin', 'cursive';
 }
 
-h1 #play1 {
-font-family: Champagne, cursiv; 
+/* All of these id selectors are similar, but only effect one id at a time to the element they were assinged to. */
+section#play1 h1 {
+    font-family: 'Champagne', 'cursive';
 }
 
-h1 #play2 {
-    font-family: Grunge, 'times New Roman', Times, serif;
+section#play2 h1 {
+    font-family: 'Grunge', 'times New Roman', serif;
 }
 
-h1 #play3 {
-    font-family: Impact, Charcoal, sans-serif;
+section#play3 {
+    background-color: hsl(0, 100%, 75%);
 }
 
-h1 #play4 {
-    font-family: Dobkin,cursive;
+section#play4 {
+    background-color: hsl(296, 86%, 86%);
 }
+
+/* "h1" elements are put after the first id selectors thanks to how CSS treats prority with these rules. */
 
 /* Description List Styles */
-
 dt {
     font-size: 1.3em;
     font-weight: bold;
-    color: hsla(0, 0%, 0%, 0.4)
+    color: hsla(0, 0%, 0%, 0.4);
 }
 
 dd {
